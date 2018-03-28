@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 class Title extends Component {
     render() {
         return (
-            <div className="page-header">
-                <h1>To do List</h1>
+            <div className="jumbotron">
+                <h1 className="display-4">To do List </h1>
+                <p className="lead">React JS</p>
             </div>
         );
     }

@@ -8,13 +8,23 @@ class Control extends Component {
         this.props.onClickShow();
     }
     render() {
-        let {onClickSearch} = this.props;
+        let { onClickSearch, isShowForm } = this.props;
+        let elmBtn = "Add Task";
+        let btnClass = "btn-primary"
+        if (isShowForm) {
+            elmBtn = "Close Task";
+            btnClass = "btn-success"
+        }
         return (
             <div className="row">
-                <Search  onClickSearch={onClickSearch} />
-                <Sort />
-                <div className="col-5">
-                    <button onClick={this.handleShow.bind(this)} type="button" className="btn btn-primary">Add Task</button>
+                <Search onClickSearch={onClickSearch} />
+                <Sort
+                    orderBy={this.props.orderBy}
+                    orderDir={this.props.orderDir}
+                    onClickSort={this.props.onClickSort}
+                />
+                <div className="col-6">
+                    <button onClick={this.handleShow.bind(this)} type="button" className={`btn btn-primary btn-block ${btnClass}`}>{elmBtn}</button>
                 </div>
             </div>
         );

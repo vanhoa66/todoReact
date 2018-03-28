@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 
 class Sort extends Component {
+
+    handleSort(orderBy, orderDir) {
+        this.props.onClickSort(orderBy, orderDir);
+    }
+
     render() {
+        let { orderBy, orderDir } = this.props;
+        let elmSort = orderBy + " - " + orderDir;
         return (
             <div className="col-3">
                 <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button className="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Sort by
-    </button>
+                    </button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a className="dropdown-item" role="button">Name ASC</a>
-                        <a className="dropdown-item" role="button">Name DESC</a>
-                        <a className="dropdown-item" role="button">Level ASC</a>
-                        <a className="dropdown-item" role="button">Level DESC</a>
+                        <a onClick={() => this.handleSort("name", "asc")} className="dropdown-item" role="button">Name Asc</a>
+                        <a onClick={() => this.handleSort("name", "desc")} className="dropdown-item" role="button">Name Desc</a>
+                        <a onClick={() => this.handleSort("level", "asc")} className="dropdown-item" role="button">Level Asc</a>
+                        <a onClick={() => this.handleSort("level", "desc")} className="dropdown-item" role="button">Level Desc</a>
                     </div>
-                    <span className="label success">Name ASC</span>
+                    <button className="btn btn-primary">{elmSort.toUpperCase()}</button>
                 </div>
             </div>
         );

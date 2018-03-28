@@ -3,14 +3,20 @@ import Item from "./Item"
 
 class List extends Component {
     render() {
-        let {items} = this.props;
+        let { items } = this.props;
         const elmItem = items.map((item, index) => {
-            return (<Item index={index} item= {item} key={index}/>)
+            return (<Item
+                onClickDelete={this.props.onClickDelete}
+                onClickEdit={this.props.onClickEdit}
+                index={index}
+                item={item}
+                key={index}
+            />)
         })
         return (
             <div className="card">
-                <div className="card-header">
-                    Featured
+                <div className="card-header text-white bg-success">
+                   <b>List Of Tasks</b>
         </div>
                 <table className="table table-striped">
                     <thead>
